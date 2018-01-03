@@ -1,7 +1,9 @@
 # Intro
-I wanted to see the real earnings you could get from a Steemit Post. I couldn't find any usable app or solution.
+This is a mobile app for both iOS & Android that allows you to see the estimated earnings you could get from a Steemit Post. I couldn't find any usable app or solution that aumatically exchanges it into my home country's currency.
 
-I created a mobile app that helps estimate your post payouts. Calculates how much reward you will receive for your posts in the currency of your country or any currency you wish to choose!!
+So i created a mobile app that helps estimate your post payouts. Calculates how much reward you will receive for your posts in the currency of your choice.
+
+Enjoy!
 
 
 [![https://github.com/azarus/steemit.price.app](https://i.imgur.com/cHRsRB0.png)](https://github.com/azarus/steemit.price.app)
