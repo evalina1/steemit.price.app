@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+		SteemIt Earnings Calculator
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+	<ion-item>
+		<ion-label stacked>
+		SteemIt.com username:		
+		</ion-label>
+		<ion-thumbnail item-start>
+			<img src="https://steemitimages.com/u/{{steemitUsername}}/avatar" *ngIf="steemitUsername.length"/>
+		</ion-thumbnail>
+		<ion-input type="text" placeholder="Username" [(ngModel)]="steemitUsername" (keyup)="debounceFindUser()"></ion-input>
+		
+	</ion-item>
+	<ion-item>
+		<button ion-button full (click)="findUsername()">Show Post Rewards</button>	
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Potential Author Payout:</ion-label>
+		<ion-label *ngIf="loadingUsers"><ion-spinner name="dots" color="primary"></ion-spinner> connecting </ion-label>
+		<ion-input type="number" placeholder="Estimated Payout $$$" [(ngModel)]="steemDollars" (keyup)="updatePrice()" *ngIf="!loadingUsers"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Currency ({{currencyName}})</ion-label>
+		<ion-select [(ngModel)]="currency" (ionChange)="retrievePrice()">
+			<ion-option *ngFor="let c of currenciesAvailable" value="{{c}}">{{c}}</ion-option>
+			<ion-option value="THB">THB</ion-option>
+			<ion-option value="EUR">EUR</ion-option>
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Estimated earnings:</ion-label>
+		<ion-label><h2 ion-text color="primary">{{displayCurrency}}{{calculatedPrice | number}} {{currency}} - {{this.steemMoney | number}} SBD</h2></ion-label>
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Exchange:</ion-label>
+		<ion-label><h2 ion-text color="primary">{{displayCurrency}}{{exchangeRate | number}} {{currency}}</h2></ion-label>
+	</ion-item>
+	<ion-item>
+		<ion-label><b>1H:</b> {{percentChange1h}}%</ion-label>
+	</ion-item>
+	<ion-item>
+		<ion-label><b>24H:</b> {{percentChange24h}}%</ion-label>
+	</ion-item>
+</ion-list>
+<button ion-button full *ngIf="!adHidden" (click)="hideAd()">Hide Ad</button>	
+<button ion-button full *ngIf="adHidden" (click)="showAdvertisement()">Support developer</button>	
+</ion-content>

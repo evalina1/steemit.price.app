@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "./keys/test.keystore",
+            "storePassword": "",
+            "alias": "steemit",
+            "password" : "",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "./keys/test.keystore",
+            "storePassword": "",
+            "alias": "steemit",
+            "password" : "",
+            "keystoreType": ""
+        }
+    }
+}
