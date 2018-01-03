@@ -55,6 +55,8 @@ To include admob api:
 
 ### Develpoment Environment with livereload
 
+The general code can be found in the src/ folder. Not much code as it's a small app, but a veryhelpfull one :)
+
 **For browsers:**
 `ionic serve`
 
@@ -73,8 +75,8 @@ Debug build:
 Release build:
 `ionic cordova build --release android`
 
-**Android** For proper release build you have to create a signing key file in keys folder
-or edit build.json
+**Android**
+For proper release build you have to create a signing key file in keys folder, or edit build.json
 `cordova build android --release -- --keystore=./keys/<keystorefile> --storePassword=<password> --alias=<alias> --password=<password>`
 
 ### I have a question, feedback, feature requests, problem or found a bug?
