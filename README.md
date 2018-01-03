@@ -80,3 +80,5 @@ or edit build.json
 ### I have a question, feedback, feature requests, problem or found a bug?
 Please open an issue ;)
 
+# LICENSE
+MIT.
