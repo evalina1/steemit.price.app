@@ -1,34 +1,96 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { HttpModule } from '@angular/http';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { AdMobFree } from '@ionic-native/admob-free';
-import { SteemService } from "../Services";
-@NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
-  imports: [
-    BrowserModule,
-	HttpModule,
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-	AdMobFree,
-	SteemService
-  ]
+import { ChartsModule } from 'ng2-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, Component } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { HttpModule, JsonpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
+const DIRECTIVES = [];
+
+import { UIModule } from "./ui.module";
+
+import { ApplicationRoutes, ApplicationComponents, EntryComponents } from "./application.routes";
+
+import {
+	// App Services
+	HTTPService,
+	AlertService,
+	MediatorService,
+	StorageService,
+	
+	// Third Party Components
+	AlertDialog,
+	LoadingDialog,
+	ConfirmationDialog, 
+
+	// Cordova Services 
+	AdService,
+} from "./services";
+
+// Root Component
+@Component({
+	selector: 'app-root',
+	template: "<router-outlet></router-outlet>"
 })
-export class AppModule {}
+export class AppComponent{}
+
+@NgModule({
+	declarations: [
+		AppComponent,
+		ApplicationComponents,
+
+		// Alert Service Components
+		AlertDialog,
+		LoadingDialog,
+		ConfirmationDialog,
+
+		DIRECTIVES,
+		EntryComponents
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		CommonModule,
+		UIModule,
+
+
+		// Core modules
+		BrowserModule,
+		BrowserAnimationsModule,
+		CommonModule,
+
+		// HTTP & Json parser
+		HttpModule,
+		JsonpModule,
+
+		// UI Modules
+		UIModule,
+
+		RouterModule.forRoot(ApplicationRoutes, { useHash: true }),
+		ChartsModule,
+	],
+	entryComponents: [
+
+		// Alert Service Components
+		AlertDialog,
+		LoadingDialog,
+		ConfirmationDialog,
+
+		EntryComponents,
+	],
+	providers: [
+		// App Services
+		HTTPService,
+		AlertService,
+		MediatorService,
+		StorageService,
+		// Cordova Services 
+		AdService,
+	],
+	bootstrap: [AppComponent]
+})
+export class AppModule
+{
+
+}

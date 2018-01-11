@@ -1,0 +1,52 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="app-content">
+	
+	<mat-card class="submissions-card" *ngIf="mediator.getValue('account')">
+		<mat-card-header>
+			<img mat-card-avatar src="https://steemitimages.com/u/{{mediator.getValue('account')}}/avatar" />
+			<mat-card-title>Contributions from {{mediator.getValue('account') || 'N/A' }}</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			
+				<div class="section">
+					<h2 class="section-title">Pending Posts:</h2>
+					<div class="section-content">
+						<mat-list>
+							<mat-list-item *ngIf="!contributions.length">
+								<p mat-line>No posts to display</p>
+							</mat-list-item>
+							<mat-list-item *ngFor="let contribution of contributions">
+								<h4 mat-line>{{contribution.title}}</h4>
+								<p mat-line> {{contribution.date | date}}</p>
+								<p>{{contribution.payout}} - {{contribution.potential}}</p>
+							</mat-list-item>
+						</mat-list>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+				<div class="section">
+					<h2 class="section-title">Pending Comments:</h2>
+					<div class="section-content">
+						<mat-list>
+							<mat-list-item *ngIf="!contributions.length">
+								<p mat-line>No comments to display</p>
+							</mat-list-item>
+							<mat-list-item *ngFor="let contribution of contributions">
+								<h4 mat-line>{{contribution.title}}</h4>
+								<p mat-line> {{contribution.date | date}}</p>
+								<p>{{contribution.payout}} - {{contribution.potential}}</p>
+							</mat-list-item>
+						</mat-list>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button color="accent" (click)="calculateEarnings()">
+				REFRESH
+				<mat-icon fontIcon="fa-superpowers"></mat-icon>
+			</button>
+		</mat-card-actions>
+	</mat-card>
+</div>
+

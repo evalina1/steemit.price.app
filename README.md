@@ -1,88 +1,27 @@
-# Intro
-This is a mobile app for both iOS & Android that allows you to see the estimated earnings you could get from a Steemit Post. I couldn't find any usable app or solution that aumatically exchanges it into my home country's currency.
+# Steemit.Earnings.App
 
-So i created a mobile app that helps estimate your post payouts. Calculates how much reward you will receive for your posts in the currency of your choice.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.8.
 
-Enjoy!
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-[![https://github.com/azarus/steemit.price.app](https://i.imgur.com/cHRsRB0.png)](https://github.com/azarus/steemit.price.app)
-**Source code is available here:**
-https://github.com/azarus/steemit.price.app
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Build
 
-[![https://play.google.com/store/apps/details?id=steemit.price.app](https://i.imgur.com/plsEMoU.png)](https://play.google.com/store/apps/details?id=steemit.price.app)
-**Prebuilt packages are also available in the appstore:**
-https://play.google.com/store/apps/details?id=steemit.price.app
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## Running unit tests
 
-### Screenshots
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-![https://i.imgur.com/BCCKOqx.png](https://i.imgur.com/BCCKOqx.png)
+## Running end-to-end tests
 
-![https://i.imgur.com/l4jJWbE.png](https://i.imgur.com/l4jJWbE.png)
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-### Built with:
-- Ionic 2
-- https://coinmarketcap.com/api/
+## Further help
 
-### Prerequisites
-
-To build the application you will need the following to be installed
-- NodeJs (https://nodejs.org/en/)
-- Ionic2 (https://ionicframework.com/getting-started)
-- Cordova (https://cordova.apache.org/#getstarted)
-- Android Studio for Android
-- XCode for IOS
-
-### Install Cordova & Ionic2 plugins
-
-**Install Dependencies**
-`npm install`
-
-**Add platforms**
-`cordova platform add android`
-
-**Install Plugins**
-
-`ionic cordova plugin add cordova-plugin-advanced-http`
-
-To include admob api:
-`ionic cordova plugin add cordova-plugin-admob-free`
-`ionic cordova plugin add cordova-plugin-admob-sdk`
-
-
-
-
-### Develpoment Environment with livereload
-
-The general code can be found in the src/ folder. Not much code as it's a small app, but a veryhelpfull one :)
-
-**For browsers:**
-`ionic serve`
-
-**For mobile version**
-`ionic cordova run android --livereload`
-
-
-### Build & Deploy
-
-Emulator
-`ionic cordova run android`
-
-Debug build:
-`ionic cordova build android`
-
-Release build:
-`ionic cordova build --release android`
-
-**Android**
-For proper release build you have to create a signing key file in keys folder, or edit build.json
-`cordova build android --release -- --keystore=./keys/<keystorefile> --storePassword=<password> --alias=<alias> --password=<password>`
-
-### I have a question, feedback, feature requests, problem or found a bug?
-Please open an issue ;)
-
-# LICENSE
-MIT.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

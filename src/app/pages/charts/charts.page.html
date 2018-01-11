@@ -1,0 +1,23 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="app-content">
+	
+	<mat-card class="earnings-card" *ngIf="mediator.getValue('account')">
+		<mat-card-header>
+			<mat-card-title>Payout History</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-form-field>
+				<input matInput [matDatepicker]="start" [(ngModel)]="startDate" placeholder="Start">
+				<mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+				<mat-datepicker touchUi="true" #start></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput [matDatepicker]="end" [(ngModel)]="endDate" placeholder="End">
+				<mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+				<mat-datepicker touchUi="true" #end></mat-datepicker>
+			</mat-form-field>
+			<mat-divider></mat-divider>
+			<canvas baseChart id="history-chart" [datasets]="historicalData" [labels]="historicalDays" [options]="chartOptions" legend="true" chartType="bar"></canvas>
+		</mat-card-content>
+	</mat-card>
+</div>
