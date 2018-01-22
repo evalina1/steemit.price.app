@@ -17,7 +17,8 @@ export class SubmissionsPage
 {
 	// Tools
 	loading = true;
-	contributions = [];
+	Posts = [];
+	Comments = [];
 	constructor(public mediator: MediatorService, public router: Router, public http: HTTPService, public alert: AlertService)
 	{
 		if(!this.mediator.getValue("account"))
@@ -26,30 +27,40 @@ export class SubmissionsPage
 		}
 	}
 
+	refresh()
+	{
+		this.Posts = [];
+		this.Comments = [];
+		this.loadSubmissions(this.mediator.getValue("account"), this.mediator.getValue("currency"));
+	}
+
 	ngOnInit()
 	{
-		//this.loadSubmissions(this.mediator.getValue("account"));
+		this.mediator.subject("account").subscribe( () => {
+			this.refresh();
+		});
+		this.mediator.subject("currency").subscribe( () => {
+			this.refresh();
+		});
 	}
 
-	calculateEarnings()
-	{
-		
-	}
 
-	loadSubmissions(account)
+	loadSubmissions(account, currency)
 	{
 		if(!account)
 			return;
 			
 		this.loading = true;
-		this.http.get("/submissions/" + account).then( response => {
+		this.http.get("/steem/pendingContributions/" + account + "/" + currency).then( response => {
 			this.loading = false;
 			if(!response.success)
 			{
 				return this.alert.snackbar("Failed to get submissions.");
 			}
-			console.log("response:", response);
-		})
+
+			this.Posts = response.pendingPosts;
+			this.Comments = response.pendingComments;
+		});
 	}
 
 	

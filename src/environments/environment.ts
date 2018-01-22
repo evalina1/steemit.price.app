@@ -5,5 +5,5 @@
 
 export const environment = {
 	production: false,
-	remoteUrl: "127.0.0.1:80",
+	remoteUrl: "http://127.0.0.1:3000",
 };

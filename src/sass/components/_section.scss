@@ -23,5 +23,10 @@
 	{
 		background-color:rgb(50, 50, 50);
 		padding:15px;
+		&.red {
+			background-color:rgb(150, 50, 50);
+			font-weight:450;
+		}
 	}
+	
 }
