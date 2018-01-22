@@ -37,13 +37,13 @@ export class DefaultLayout
 		// save accounts on update
 		if(storage.exists("accounts"))
 		{
-			this.accounts = storage.get("accounts");
+			this.accounts = storage.get("accounts") || [];
 		}
 		
 		// Recover last selected account
 		if(storage.exists("account"))
 		{
-			this.mediator.emit("account", storage.get("account"));
+			this.mediator.emit("account", storage.get("account") || []);
 		}
 
 		// Listen for accounts list changes
