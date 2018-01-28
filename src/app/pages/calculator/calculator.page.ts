@@ -12,11 +12,12 @@ export class CalculatorPage
 	// Tools
 	loading = true;
 
-	potentialPayoutTotal = 0;
-	potentialPayoutRewardShare = 0.375;
-	potentialPayoutSBD = 0;
-	exchangeRate = 200;
-	potentialEarnings = 0;
+	PotentialEarnings = 0;
+	PayoutShares = 0;
+	SteemShare = 0;
+	RewardDistribution = 0;
+	ExchangeRate = 0;
+	
 	
 	constructor(public mediator: MediatorService, public router: Router, public http: HTTPService, public alert: AlertService)
 	{
@@ -28,27 +29,53 @@ export class CalculatorPage
 
 	ngOnInit()
 	{
-		//this.loadAccount(this.mediator.getValue("account"));
-	}
-
-	calculateEarnings()
-	{
+		this.mediator.subject("currency").subscribe( (currency) => {
+			this.loadExchangeRates(currency);
+		});
 		
 	}
 
-	loadAccount(account)
+	SBDEarnings = 0;
+	TotalEarnings = 0;
+
+	calculateSBDEarnings()
 	{
-		if(!account)
-			return;
-			
+		this.SBDEarnings = this.PotentialEarnings;
+		if(this.PayoutShares)
+		{
+			this.SBDEarnings *= (1 - (this.PayoutShares / 100));
+		}
+		if(this.SteemShare)
+		{
+			this.SBDEarnings *= ( 1 - this.SteemShare);;
+		}
+		if(this.RewardDistribution)
+		{
+			this.SBDEarnings *= this.RewardDistribution;
+		}
+	}
+
+	calculateEarnings($event)
+	{
+		console.log($event);
+		this.calculateSBDEarnings();
+		this.TotalEarnings = this.ExchangeRate * this.SBDEarnings;
+	}
+
+	loadExchangeRates(currency)
+	{
 		this.loading = true;
-		this.http.get("/account/" + account).then( response => {
+		this.http.get("/rates/" + currency).then( response => {
 			this.loading = false;
 			if(!response.success)
 			{
-				return this.alert.snackbar("Failed to get account.");
+				return this.alert.snackbar("Failed to get exchange rates.");
 			}
-			console.log("response:", response);
+			let market = response.marketStatus;
+			this.SteemShare = response.steemShare;
+			this.RewardDistribution = response.rewardDistribution;
+			this.ExchangeRate = market.price;
+			console.log("ExchangeRate", this.ExchangeRate, response);
 		})
 	}
 

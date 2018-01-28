@@ -43,19 +43,19 @@
 					</div>
 				</div>
 				<mat-divider></mat-divider>
-
+<!--
 				<div class="section">
 					<h2 class="section-title">Estimated Curation Earnings:</h2>
 					<div class="section-content highlight">
 						{{curationEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
 					</div>
 				</div>
-				<mat-divider></mat-divider>
+				<mat-divider></mat-divider>-->
 
 				<div class="section">
 					<h2 class="section-title">Current Exchange Rate (SBD => {{mediator.getValue("currency")}}):</h2>
 					<div class="section-content highlight">
-						{{potentialEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}}
+						{{marketStatus.price | currency: mediator.getValue("currency"):true:'1.2-2'}}
 					</div>
 				</div>
 			

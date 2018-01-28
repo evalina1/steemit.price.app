@@ -11,54 +11,38 @@
 					<h2 class="section-title">Potential Post Payout:</h2>
 					<div class="section-content">
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Total" value="0" [(ngModel)]="potentialPayoutTotal">
+							<input matInput type="number"  placeholder="Potential Earnings"  [(ngModel)]="PotentialEarnings" (ngModelChange)="PotentialEarnings=$event;calculateEarnings()" />
 						</mat-form-field>
 						
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Shares" value="{{potentialPayoutShares | number:'1.4-4'}}" [(ngModel)]="potentialPayoutShares">
+							<input matInput type="number" placeholder="Beneficals % (Default 25% is already applied)" [ngModel]="PayoutShares | number:'1.4-4'" (ngModelChange)="PayoutShares=$event; calculateEarnings()" />
 						</mat-form-field>
 
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="SBD" value="{{potentialPayoutTotal*potentialPayoutRewardShare | number:'1.2-4'}}" [(ngModel)]="potentialPayoutSBD">
+							<input matInput type="number" placeholder="$ (SBD)" [ngModel]="SBDEarnings | number:'1.2-4'" (ngModelChange)="SBDEarnings=$event; calculateEarnings()" />
 						</mat-form-field>
 					</div>
 				</div>
 				<mat-divider></mat-divider>
 
 				<div class="section">
-					<h2 class="section-title">Potential Earnings:</h2>
+					<h2 class="section-title">Potential Earnings ({{mediator.getValue("currency")}}):</h2>
 					<div class="section-content highlight">
-						{{potentialPayoutSBD * exchangeRate | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
+						{{TotalEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}}
 					</div>
 				</div>
 				<mat-divider></mat-divider>
 
 				<div class="section">
-					<h2 class="section-title">Author Earnings:</h2>
+					<h2 class="section-title">Exchange Rate:</h2>
 					<div class="section-content highlight">
-						{{potentialEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
-					</div>
-				</div>
-				<mat-divider></mat-divider>
-
-				<div class="section">
-					<h2 class="section-title">Curation Earnings:</h2>
-					<div class="section-content highlight">
-						{{potentialEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
-					</div>
-				</div>
-				<mat-divider></mat-divider>
-
-				<div class="section">
-					<h2 class="section-title">Overview:</h2>
-					<div class="section-content highlight">
-						{{potentialEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
+						{{ExchangeRate | currency: mediator.getValue("currency"):true:'1.2-2'}}
 					</div>
 				</div>
 			
 		</mat-card-content>
 		<mat-card-actions>
-			<button mat-raised-button color="accent" (click)="calculateEarnings()">
+			<button mat-raised-button color="accent" (click)="loadExchangeRates(mediator.getValue('currency'))">
 				REFRESH
 				<mat-icon fontIcon="fa-superpowers"></mat-icon>
 			</button>

@@ -39,6 +39,7 @@ export class DefaultLayout
 		{
 			this.accounts = storage.get("accounts") || [];
 		}
+		console.log("Got accounts:", this.accounts, storage.get("accounts"));
 		
 		// Recover last selected account
 		if(storage.exists("account"))
@@ -47,7 +48,9 @@ export class DefaultLayout
 		}
 
 		// Listen for accounts list changes
-		this.mediator.subject("accounts.updated").subscribe( account => {
+		this.mediator.subject("accounts.updated").subscribe( accounts => {
+			if(!accounts)
+				return;
 			this.accounts = storage.get("accounts");
 			console.log("this.accounts:", this.accounts);
 		});

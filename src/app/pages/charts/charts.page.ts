@@ -14,6 +14,12 @@ export class ChartsPage
 	public chartOptions:any = {
 		scaleShowVerticalLines: true,
 		responsive: true,
+		bezierCurve: false,
+		elements: {
+			line: {
+				tension: 0
+			}
+		},
 		scales: {
             xAxes: [{
                 type: 'time',
