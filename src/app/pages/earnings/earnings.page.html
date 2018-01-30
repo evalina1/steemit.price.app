@@ -15,14 +15,14 @@
 					<h2 class="section-title">Potential Payout:</h2>
 					<div class="section-content">
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Total Value (SBD)" value="0" disabled />
+							<input matInput placeholder="Estimated Payout" value="{{PayoutTotal | number:'1.2-4'}}" disabled />
 						</mat-form-field>
 						<mat-form-field class="full-width block-input">
 							<input matInput placeholder="Beneficals (SBD)" value="{{PayoutShare | number:'1.2-4'}}"  disabled/>
 						</mat-form-field>
 
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Reward (SBD)" value="{{PayoutTotal | number:'1.2-4'}}" disabled />
+							<input matInput placeholder="Total Reward (SBD)" value="{{PayoutSBD | number:'1.2-4'}}" disabled />
 						</mat-form-field>
 					</div>
 				</div>

@@ -23,7 +23,7 @@ export class AccountsPage
 		if(!this.accountName ||!this.accountName.length)
 			return;
 
-		this.accountName = this.accountName.toLowerCase().trim().replace(/ /g, "");
+		this.accountName = this.accountName.toLowerCase().trim().replace(/ /g, "").replace(/@/g, "");
 	
 		// Don't add the account if it already exists
 		if(this.accounts.indexOf(this.accountName) >= 0)

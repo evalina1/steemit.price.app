@@ -47,7 +47,7 @@ export class CalculatorPage
 		}
 		if(this.SteemShare)
 		{
-			this.SBDEarnings *= ( 1 - this.SteemShare);;
+			this.SBDEarnings *= (1 - this.SteemShare);
 		}
 		if(this.RewardDistribution)
 		{

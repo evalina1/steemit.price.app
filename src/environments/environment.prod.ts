@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	remoteUrl: "://api.steemearnings.com/v1",
+	remoteUrl: "https://api.steemearnings.com/v1",
 };
