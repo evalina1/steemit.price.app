@@ -1,0 +1,25 @@
+.mat-card
+{
+	.mat-card-avatar
+	{
+		vertical-align: middle;
+	}
+
+	.mat-card-header .mat-card-title
+	{
+		margin-left:5px;
+		font-size:20px;
+		vertical-align: middle;
+		font-weight:normal;
+	}
+	
+	.mat-card-subtitle {
+		font-size:16px;
+	}
+	
+	margin-bottom:10px;
+	.mat-card-actions
+	{
+		text-align:right;
+	}
+}

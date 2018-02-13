@@ -1,0 +1,84 @@
+<mat-drawer-container class="sidenav-container">
+
+	<mat-drawer #sideNav class="sidenav" [mode]="(!media.isActive('gt-sm')?'over':'side')" [opened]="media.isActive('gt-md')" [style.width]="(media.isActive('gt-sm')?'350px':'80%')">
+		<mat-toolbar color="primary">
+			<span>Steem Earnings</span>
+		</mat-toolbar>
+		<mat-nav-list class="nav-menu">
+			<!--<mat-list-item>
+				<p mat-line>
+				<b>SBD Price</b>
+				<p mat-line>฿{{244560 |number}} THB</p>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			-->
+			<a mat-list-item routerLink="/app/earnings" routerLinkActive="active" (click)="closeNav()">
+				<p mat-line>
+					<mat-icon fontIcon="fa-superpowers"></mat-icon>
+					Earnings
+				</p>
+			</a>
+			<a mat-list-item routerLink="/app/contributions" routerLinkActive="active" (click)="closeNav()">
+				<p mat-line>
+					<mat-icon fontIcon="fa-comments"></mat-icon>
+					Contributions
+				</p>
+			</a>
+			<a mat-list-item routerLink="/app/charts" routerLinkActive="active" (click)="closeNav()">
+				<p mat-line>
+					<mat-icon fontIcon="fa-line-chart"></mat-icon>
+					Overview
+				</p>
+			</a>
+			<a mat-list-item routerLink="/app/calculator" routerLinkActive="active" (click)="closeNav()">
+				<p mat-line>
+					<mat-icon fontIcon="fa-calculator"></mat-icon>
+					Calculator
+				</p>
+			</a>
+			<mat-divider></mat-divider>
+			<a mat-list-item routerLink="/app/accounts" routerLinkActive="active" (click)="closeNav()">
+				<p mat-line>Accounts</p>
+			</a>
+		</mat-nav-list>
+
+	</mat-drawer>
+
+
+	<mat-toolbar color="primary">
+		<button mat-icon-button (click)="sideNav.toggle()">
+			<mat-icon fontIcon="fa-bars"></mat-icon>
+		</button>
+
+		<span fxFlex></span>
+		<button mat-button routerLink="/app/accounts" routerLinkActive="active" *ngIf="!accounts.length">
+			<mat-icon fontIcon="fa-plus"></mat-icon> Add Account
+		</button>
+
+		<button mat-button [matMenuTriggerFor]="accountMenu" *ngIf="accounts.length">
+			<img *ngIf="mediator.getValue('account')" class="user-icon" src="https://steemitimages.com/u/{{mediator.getValue('account')}}/avatar" />
+			<span class="username">{{mediator.getValue('account') || "Select Account"}}</span>
+		</button>
+
+		<mat-menu #accountMenu="matMenu">
+			<button mat-menu-item *ngFor="let account of accounts" (click)="switchAccount(account)">Switch to {{account}}</button>
+			<button mat-menu-item routerLink="/app/accounts" routerLinkActive="active" >
+					<mat-icon fontIcon="fa-pencil"></mat-icon>
+				Manage Accounts
+			</button>
+		</mat-menu>
+
+		<button mat-button [matMenuTriggerFor]="currencyMenu">
+			{{mediator.getValue('currency')}}
+		</button>
+		<mat-menu #currencyMenu="matMenu">
+			<button mat-menu-item *ngFor="let currency of currencies" (click)="switchCurrency(currency)">{{currency}}</button>
+		</mat-menu>
+	</mat-toolbar>
+	<div class="container">
+		<router-outlet></router-outlet>
+	</div>
+	
+	
+
+</mat-drawer-container>

@@ -1,0 +1,61 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="app-content">
+	
+	<mat-card class="submissions-card" *ngIf="mediator.getValue('account')">
+		<mat-card-header>
+			<img mat-card-avatar src="https://steemitimages.com/u/{{mediator.getValue('account')}}/avatar" />
+			<mat-card-title>Contributions from {{mediator.getValue('account') || 'N/A' }}</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+				<div class="section" *ngIf="loading">
+					<div class="section-content highlight red">
+						<b>Note:</b> We're collecting your data from the steemit.com database, this may take a while!
+					</div>
+				</div>	
+
+				<div class="section">
+					<h2 class="section-title">Pending Posts:</h2>
+					<div class="section-content">
+						<mat-list>
+							<mat-list-item *ngIf="!Posts.length">
+								<p mat-line>No posts to display</p>
+							</mat-list-item>
+							<mat-list-item *ngFor="let post of Posts">
+								<h4 mat-line>{{post.title}}</h4>
+								<p mat-line>{{post.date | date}}
+									<span class="sbd-value">${{post.value}} SBD</span>
+								</p>
+								<p><span class="currency-value">{{post.earnings | currency: mediator.getValue("currency"):true:'1.2-2'}}</span></p>
+							</mat-list-item>
+						</mat-list>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+				<div class="section">
+					<h2 class="section-title">Pending Comments:</h2>
+					<div class="section-content">
+						<mat-list>
+							<mat-list-item *ngIf="!Comments.length">
+								<p mat-line>No comments to display</p>
+							</mat-list-item>
+							<mat-list-item *ngFor="let comment of Comments">
+								<h4 mat-line>{{comment.title}}</h4>
+								<p mat-line>{{comment.date | date}}
+									<span class="sbd-value">${{comment.value}} SBD</span>
+								</p>
+								<p><span class="currency-value">{{comment.earnings | currency: mediator.getValue("currency"):true:'1.2-2'}}</span></p>
+							</mat-list-item>
+						</mat-list>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button color="accent" (click)="refresh()">
+				REFRESH
+				<mat-icon fontIcon="fa-superpowers"></mat-icon>
+			</button>
+		</mat-card-actions>
+	</mat-card>
+</div>
+

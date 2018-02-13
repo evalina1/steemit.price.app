@@ -1,8 +1,0 @@
-{
-  "name": "Steem Price Calculator",
-  "app_id": "steemit.price.app",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
-}

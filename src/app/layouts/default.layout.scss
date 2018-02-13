@@ -1,0 +1,27 @@
+.container {
+	position: relative;
+	display:block;
+	height: calc(100% - 64px);
+	width:100%;
+	//overflow-y: scroll;
+	overflow: auto;
+}
+
+.user-icon
+{
+	border-radius: 100%;
+	margin:5px;
+	width:32px;
+	height:32px;
+}
+.username
+{
+	font-size:20px;
+}
+
+#app-icon
+{
+	width:64px;
+	height:64px;
+	margin-right:20px;
+}

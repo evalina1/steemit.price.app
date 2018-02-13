@@ -1,0 +1,13 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="app-content">
+	
+	<mat-card class="earnings-card" *ngIf="mediator.getValue('account')">
+		<mat-card-header>
+			<mat-card-title>Payout Overview</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-divider></mat-divider>
+			<canvas #chart baseChart id="history-chart" [datasets]="historicalData" [labels]="historicalDays" [options]="chartOptions" legend="true" chartType="line"></canvas>
+		</mat-card-content>
+	</mat-card>
+</div>

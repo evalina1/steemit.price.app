@@ -1,0 +1,7 @@
+
+$primary: mat-palette($mat-blue, 500);
+$secondary: mat-palette($mat-blue, 600);
+$accent: mat-palette($mat-orange, 900);
+$warn: mat-palette($mat-red, 600);
+
+$theme: mat-dark-theme($primary, $accent, $warn);

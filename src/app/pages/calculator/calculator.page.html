@@ -1,0 +1,52 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="app-content">
+	
+	<mat-card class="earnings-card" *ngIf="mediator.getValue('account')">
+		<mat-card-header>
+			<mat-card-title>Steem Calculator</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			
+				<div class="section">
+					<h2 class="section-title">Potential Post Payout:</h2>
+					<div class="section-content">
+						<mat-form-field class="full-width block-input">
+							<input matInput type="number"  placeholder="Potential Earnings"  [(ngModel)]="PotentialEarnings" (ngModelChange)="PotentialEarnings=$event;calculateEarnings()" />
+						</mat-form-field>
+						
+						<mat-form-field class="full-width block-input">
+							<input matInput type="number" placeholder="Beneficals % (Default 25% is already applied)" [ngModel]="PayoutShares | number:'1.4-4'" (ngModelChange)="PayoutShares=$event; calculateEarnings()" />
+						</mat-form-field>
+
+						<mat-form-field class="full-width block-input">
+							<input matInput type="number" placeholder="$ (SBD)" [ngModel]="SBDEarnings | number:'1.2-4'" (ngModelChange)="SBDEarnings=$event; calculateEarnings()" />
+						</mat-form-field>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+
+				<div class="section">
+					<h2 class="section-title">Potential Earnings ({{mediator.getValue("currency")}}):</h2>
+					<div class="section-content highlight">
+						{{TotalEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}}
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+
+				<div class="section">
+					<h2 class="section-title">Exchange Rate:</h2>
+					<div class="section-content highlight">
+						{{ExchangeRate | currency: mediator.getValue("currency"):true:'1.2-2'}}
+					</div>
+				</div>
+			
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button color="accent" (click)="loadExchangeRates(mediator.getValue('currency'))">
+				REFRESH
+				<mat-icon fontIcon="fa-superpowers"></mat-icon>
+			</button>
+		</mat-card-actions>
+	</mat-card>
+</div>
+
