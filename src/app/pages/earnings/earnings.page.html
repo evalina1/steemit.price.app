@@ -3,33 +3,33 @@
 	<mat-card class="earnings-card" *ngIf="mediator.getValue('account')">
 		<mat-card-header>
 			<img mat-card-avatar src="https://steemitimages.com/u/{{mediator.getValue('account')}}/avatar" />
-			<mat-card-title>Earnings of {{mediator.getValue('account') || 'N/A' }}</mat-card-title>
+			<mat-card-title>{{"earnings_of" | translate}} {{mediator.getValue('account') || 'N/A' }}</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
 				<div class="section" *ngIf="loading">
 					<div class="section-content highlight red">
-						<b>Note:</b> We're collecting your data from the steemit.com database, this may take a while!
+						<b>{{"note" | translate}}</b>{{"steem_data_loading" | translate}} 
 					</div>
 				</div>	
 				<div class="section">
-					<h2 class="section-title">Potential Payout:</h2>
+					<h2 class="section-title">{{"potential_payout" | translate}}</h2>
 					<div class="section-content">
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Estimated Payout" value="{{PayoutTotal | number:'1.2-4'}}" disabled />
+							<input matInput placeholder="{{'estimated_payout' | translate}}" value="{{PayoutTotal | number:'1.2-4'}}" disabled />
 						</mat-form-field>
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Beneficals (SBD)" value="{{PayoutShare | number:'1.2-4'}}"  disabled/>
+							<input matInput placeholder="{{'beneficals_sbd' | translate}}" value="{{PayoutShare | number:'1.2-4'}}"  disabled/>
 						</mat-form-field>
 
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="Total Reward (SBD)" value="{{PayoutSBD | number:'1.2-4'}}" disabled />
+							<input matInput placeholder="{{'total_reward_sbd' | translate}}" value="{{PayoutSBD | number:'1.2-4'}}" disabled />
 						</mat-form-field>
 					</div>
 				</div>
 				<mat-divider></mat-divider>
 
 				<div class="section">
-					<h2 class="section-title">Estimated Total Earnings:</h2>
+					<h2 class="section-title">{{"estimated_total Earnings:"" | translate}}</h2>
 					<div class="section-content highlight">
 						{{authorEarnings + curationEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
 					</div>
@@ -37,7 +37,7 @@
 				<mat-divider></mat-divider>
 
 				<div class="section">
-					<h2 class="section-title">Estimated Author Earnings:</h2>
+					<h2 class="section-title">{{"estimated_Author_earnings:"" | translate}}</h2>
 					<div class="section-content highlight">
 						{{authorEarnings | currency: mediator.getValue("currency"):true:'1.2-2'}} {{mediator.getValue("currency")}}
 					</div>
@@ -53,7 +53,7 @@
 				<mat-divider></mat-divider>-->
 
 				<div class="section">
-					<h2 class="section-title">Current Exchange Rate (SBD => {{mediator.getValue("currency")}}):</h2>
+					<h2 class="section-title">{{current exchange rate | translate}} (SBD => {{mediator.getValue("currency")}}):</h2>
 					<div class="section-content highlight">
 						{{marketStatus.price | currency: mediator.getValue("currency"):true:'1.2-2'}}
 					</div>
@@ -62,7 +62,7 @@
 		</mat-card-content>
 		<mat-card-actions>
 			<button mat-raised-button color="accent" (click)="refresh()">
-				REFRESH
+				{{"refresh" | translate}}
 				<mat-icon fontIcon="fa-superpowers"></mat-icon>
 			</button>
 		</mat-card-actions>

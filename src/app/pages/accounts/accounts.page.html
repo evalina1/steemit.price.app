@@ -2,14 +2,14 @@
 	<form (ngSubmit)="addAccount()">
 		<mat-card class="earnings-card">
 			<mat-card-header>
-				<mat-card-title>Your STEEM earnings</mat-card-title>
+				<mat-card-title>{{"your_steem_earnings" | translate}}</mat-card-title>
 			</mat-card-header>
 			<mat-card-content>
 				<div class="section">
-					<h2 class="section-title">Please type in your Steemit.com username:</h2>
+					<h2 class="section-title">{{"type_steem_username" | translate}}</h2>
 					<div class="section-content">
 						<mat-form-field class="full-width block-input">
-							<input matInput placeholder="@Username" name="username" value="" [(ngModel)]="accountName">
+							<input matInput placeholder= "@{{'username' | translate}}"  name="username" value="" [(ngModel)]="accountName">
 						</mat-form-field>
 					</div>
 				</div>
@@ -17,21 +17,21 @@
 			<mat-card-actions>
 				<button mat-raised-button color="accent" (click)="addAccount()">
 					<mat-icon fontIcon="fa-plus"></mat-icon>
-					Add Account
+					{{"add_account" | translate}}
 				</button>
 			</mat-card-actions>
 		</mat-card>
 	</form>
 	<mat-card class="earnings-card" *ngIf="accounts.length">
 		<mat-card-header>
-			<mat-card-title>Manage Accounts</mat-card-title>
+			<mat-card-title>{{"manage_accounts" | translate}}</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
 			<mat-nav-list>
-				<h3 mat-subheader>Your Accounts</h3>
+				<h3 mat-subheader>{{"your_accounts" | translate}}</h3>
 				<mat-list-item *ngFor="let account of accounts">
 					<img mat-list-icon src="https://steemitimages.com/u/{{account || 'unknown'}}/avatar" (click)="selectAccount(account)" />
-					<h4 mat-line (click)="selectAccount(account)">{{account}}</h4>
+					<h4 mat-line (click)="selectAccount(account)">{{"account" | translate}}</h4>
 					<p>
 						<button mat-icon-button color="warn" (click)="removeAccount(account)">
 							<mat-icon fontIcon="fa-trash"></mat-icon>
